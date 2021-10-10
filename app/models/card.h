@@ -2,6 +2,7 @@
 #define CARD_H
 
 #include <QObject>
+#include <QPixmap>
 
 #include "color.h"
 #include "value.h"
@@ -10,18 +11,36 @@
  * @brief The Card class represents a card of the game
  */
 
-class Card
+class Card : public QObject
 {
     Q_OBJECT
 
 public:
-    Card();
+    explicit Card();
+    explicit Card(Color c, Value v, int p, QObject *parent = nullptr);
+
+    QPixmap mPicture;
+
+    QString print();
+
+
+    Color color() const;
+    void setColor(Color newColor);
+
+    Value value() const;
+    void setValue(Value newValue);
+
+    int point() const;
+    void setPoint(int newPoint);
+
+    bool isPlayable() const;
+    void setIsPlayable(bool newIsPlayable);
 
 private:
-    Color   myColor;
-    Value   myValue;
-    int     myPoint;
-    bool    myIsPlayable;
+    Color   mColor;
+    Value   mValue;
+    int     mPoint;
+    bool    mIsPlayable;
 
 };
 

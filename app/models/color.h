@@ -8,8 +8,10 @@
 enum Color
 {
     COLOR_BEGIN,
-    RED = COLOR_BEGIN,
-    BLACK,
+    BLACK_CLUBS = COLOR_BEGIN,  // 0
+    BLACK_SPADE,                // 1
+    RED_HEART,                  // 2
+    RED_DIAMOND,                // 3
     COLOR_END
 };
 
