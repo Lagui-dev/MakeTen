@@ -23,4 +23,13 @@ enum Value
     VALUE_END
 };
 
+// Definition of ++ operator for Value
+    Value &operator++(Value &v);
+    Value  operator++(Value &v, int);
+
+// Definition of -- operator for Value
+    Value &operator--(Value &v);
+    Value  operator--(Value &v, int);
+
+
 #endif // VALUE_H

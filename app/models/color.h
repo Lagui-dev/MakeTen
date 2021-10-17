@@ -15,4 +15,20 @@ enum Color
     COLOR_END
 };
 
+enum ColorBackground
+{
+    BLUE,
+    GRAY,
+    GREEN,
+    PURPLE,
+    YELLOW,
+    RED
+};
+
+Color &operator++(Color &c);
+Color  operator++(Color &c, int);
+
+Color &operator--(Color &c);
+Color  operator--(Color &c, int);
+
 #endif // COLOR_H

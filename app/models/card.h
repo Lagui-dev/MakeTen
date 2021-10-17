@@ -36,11 +36,14 @@ public:
     bool isPlayable() const;
     void setIsPlayable(bool newIsPlayable);
 
+    void setColorBackground(ColorBackground newColorBackground);
+
 private:
     Color   mColor;
     Value   mValue;
     int     mPoint;
     bool    mIsPlayable;
+    ColorBackground mColorBackground;
 
 };
 

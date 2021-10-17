@@ -28,8 +28,3 @@ bool MakeTenGlobal::removeInstance()
     return false;
 }
 
-void MakeTenGlobal::demo()
-{
-    qDebug() << "demo";
-}
-

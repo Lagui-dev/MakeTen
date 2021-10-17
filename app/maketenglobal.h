@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QDebug>
 
+
 class MakeTenGlobal : QObject
 {
     Q_OBJECT
@@ -11,7 +12,6 @@ public:
 
     static MakeTenGlobal *getInstance();
     bool removeInstance();
-    void demo();
 
 private:
 
