@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Make TEN  - About</string>
+   <string>Tens Solitaire  - About...</string>
   </property>
   <property name="styleSheet">
    <string notr="true">#about {
@@ -252,6 +252,19 @@ background-image: url(:/images/background_table.png);
    </property>
    <property name="text">
     <string>Close</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>10</y>
+     <width>271</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:7pt; font-weight:600; color:#e1e1e1;&quot;&gt;Discard any pair of cards which total ten. &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:7pt; font-weight:600; color:#e1e1e1;&quot;&gt;The valid pairs are:&lt;br/&gt;A and 9&lt;br/&gt;2 and 8&lt;br/&gt;3 and 7&lt;br/&gt;4 and 6&lt;br/&gt;5 and 5&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:7pt; font-weight:600; color:#e1e1e1;&quot;&gt;Tens and face cards (J, Q, K) may be eliminated too.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>
