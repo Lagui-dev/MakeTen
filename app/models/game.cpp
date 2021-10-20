@@ -4,7 +4,7 @@ Game::Game(QObject *parent) : QObject(parent)
 {
     mDeck = new Deck(true);
     mTableOne = new Table();
-    mplayerOne = new Player("Robert");
+    mPlayerOne = new Player("Robert");
     mStacks = QVector<Card *>(9,nullptr);
 
     for (int c = 0; c < mStacks.size(); c++) {
@@ -14,13 +14,13 @@ Game::Game(QObject *parent) : QObject(parent)
     mSumOfCard = 0;
 }
 
-Card *Game::getCard(int stackIdx)
+Card *Game::getCard(const int stackIdx)
 {
-    return mStacks.at(stackIdx - 1);
+    return mStacks.at(stackIdx);
 }
 
 
-State Game::check(int stackIdx)
+State Game::check(const int stackIdx)
 {
     // backgrounded card
     if (!isPlayable(stackIdx)) {
@@ -28,13 +28,13 @@ State Game::check(int stackIdx)
     }
 
     auto sumOfCardBefore = mSumOfCard;
-    mSumOfCard += mStacks.at(stackIdx - 1)->point();
+    mSumOfCard += mStacks.at(stackIdx)->point();
     mNumberOfCardSelected++;
     qDebug() << mSumOfCard << mNumberOfCardSelected;
 
     switch (mNumberOfCardSelected) {
     case 1:
-        if (mStacks.at(stackIdx - 1)->value() == Value::TEN) {
+        if (mStacks.at(stackIdx)->value() == Value::TEN) {
             mSumOfCard = 0;
             mNumberOfCardSelected = 0;
             return State::WINNING1CARD;
@@ -54,7 +54,7 @@ State Game::check(int stackIdx)
              *
              * SumBefore = 12 && CurrentCard = 12 Then 2 Queens => Cancel
              */
-            if ((sumOfCardBefore == 12) && (mStacks.at(stackIdx - 1)->point()==12)) {
+            if ((sumOfCardBefore == 12) && (mStacks.at(stackIdx)->point()==12)) {
                 mSumOfCard = 0;
                 mNumberOfCardSelected = 0;
                 return State::CANCEL;
@@ -84,18 +84,26 @@ State Game::check(int stackIdx)
         return State::WAITING;
         break;
     }
-    qDebug() << "Here ?";
     return State::CANCEL;
 }
 
-void Game::draw(int stackIdx)
+bool Game::draw(const int stackIdx)
 {
-    mStacks.replace(stackIdx - 1, mDeck->draw());
+    mStacks.replace(stackIdx, mDeck->draw());
+    if (mStacks.at(stackIdx) == nullptr) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
-bool Game::isPlayable(int stackIdx)
+bool Game::isPlayable(const int stackIdx)
 {
-    return mStacks.at(stackIdx - 1)->isPlayable();
+    if (mStacks.at(stackIdx) == nullptr) {
+        return false;
+    } else {
+        return mStacks.at(stackIdx)->isPlayable();
+    }
 }
 
 int Game::size()

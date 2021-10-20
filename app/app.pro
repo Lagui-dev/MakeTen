@@ -29,7 +29,3 @@ macx {
 }
 
 FORMS +=
-
-DISTFILES += \
-    icons/idea.svg
-

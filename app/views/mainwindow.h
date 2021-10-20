@@ -24,7 +24,7 @@ public:
 
 private slots:
     void on_actionQ_triggered();
-    void cardSelected(int stackIdx);
+    void cardSelected(const int currentStackIdx);
 
     void on_actionPlay_triggered();
 

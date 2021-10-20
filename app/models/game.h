@@ -24,16 +24,16 @@ class Game : public QObject
 
 public:
     Game(QObject *parent = nullptr);
-    Card *getCard(int stackIdx);
-    State check(int stackIdx);
-    void draw(int stackIdx);
-    bool isPlayable(int stackIdx);
+    Card *getCard(const int stackIdx);
+    State check(const int stackIdx);
+    bool draw(const int stackIdx);
+    bool isPlayable(const int stackIdx);
     int size();
 
 private:
     Table  *mTableOne;
     Deck   *mDeck;
-    Player *mplayerOne;
+    Player *mPlayerOne;
     QVector<Card *> mStacks;
     int    mSumOfCard;
     int    mNumberOfCardSelected;
