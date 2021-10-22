@@ -2,7 +2,6 @@
 #define CONFIG_H
 
 #include <QObject>
-#include <QDebug>
 
 
 class MakeTenGlobal : QObject

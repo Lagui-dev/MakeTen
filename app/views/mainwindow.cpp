@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     mStackedCards.append(ui->pushButton_8);
     mStackedCards.append(ui->pushButton_9);
 
+    ui->statusbar->showMessage("Tens Solitaire v0.1 - MIT Licence - 2021");
     mGame = new Game();
     int stackIdx = 0;
     QList<QPushButton *>::iterator it;
@@ -25,8 +26,13 @@ MainWindow::MainWindow(QWidget *parent)
         connect((*it), &QPushButton::clicked, this, [=]() {this->cardSelected(stackIdx); });
         stackIdx++;
     }
+    connect(&mChrono, &QTimer::timeout, this, &MainWindow::chronoUpate);
 
+    mChronoHMS = QTime(0,0,0,0);
+    ui->lblChrono->setText(mChronoHMS.toString("hh:mm:ss"));
     ui->lblNumberOfCards->setText(QString::number(mGame->size()));
+    mChrono.setInterval(1000);
+    mChrono.start();
     this->show();
 }
 
@@ -35,20 +41,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_actionQ_triggered()
-{
-    qApp->quit();
-}
-
 void MainWindow::cardSelected(const int currentStackIdx)
 {
-//    if (currentStackIdx >= 1) {
-//        // check if card before is playable ?
-//        if (!mGame->isPlayable(currentStackIdx-1)) {
-//            return;
-//        }
-//    }
-
     QList<QPushButton *>::iterator it;
     int stackIdx = 0;
     switch (mGame->check(currentStackIdx)) {
@@ -114,14 +108,39 @@ void MainWindow::cardSelected(const int currentStackIdx)
         }
         break;
     }
-    ui->lblNumberOfCards->setText(QString::number(mGame->size()));
+    areYouWin();
+}
+
+void MainWindow::chronoUpate()
+{
+    mChronoHMS = mChronoHMS.addSecs(1);
+    ui->lblChrono->setText(mChronoHMS.toString("hh:mm:ss"));
+}
+
+void MainWindow::areYouWin()
+{
+    bool win = true;
+    QList<QPushButton *>::iterator it;
+    for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
+        win = win && not((*it)->isVisible());
+    }
+    if (win) {
+        ui->lblNumberOfCards->setText("YOU WIN!");
+        mChrono.stop();
+    } else {
+        ui->lblNumberOfCards->setText(QString::number(mGame->size()));
+    }
 }
 
 
 void MainWindow::on_actionPlay_triggered()
 {
+    mChrono.stop();
     delete mGame;
     mGame = new Game();
+    mChronoHMS = QTime(0,0,0,0);
+    ui->lblChrono->setText(mChronoHMS.toString("hh:mm:ss"));
+    mChrono.start();
     int stackIdx = 0;
     QList<QPushButton *>::iterator it;
     for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
@@ -138,5 +157,12 @@ void MainWindow::on_actionHelp_triggered()
 {
     auto Help = new about();
     Help->exec();
+}
+
+
+
+void MainWindow::on_actionQuit_triggered()
+{
+    qApp->quit();
 }
 

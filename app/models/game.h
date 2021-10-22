@@ -2,7 +2,6 @@
 #define GAME_H
 
 #include <QObject>
-#include <QDebug>
 
 #include "models/deck.h"
 #include "models/card.h"

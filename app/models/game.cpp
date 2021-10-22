@@ -3,7 +3,7 @@
 Game::Game(QObject *parent) : QObject(parent)
 {
     mDeck = new Deck(true);
-    mTableOne = new Table();
+    //mTableOne = new Table();
     mPlayerOne = new Player("Robert");
     mStacks = QVector<Card *>(9,nullptr);
 
@@ -30,7 +30,6 @@ State Game::check(const int stackIdx)
     auto sumOfCardBefore = mSumOfCard;
     mSumOfCard += mStacks.at(stackIdx)->point();
     mNumberOfCardSelected++;
-    qDebug() << mSumOfCard << mNumberOfCardSelected;
 
     switch (mNumberOfCardSelected) {
     case 1:

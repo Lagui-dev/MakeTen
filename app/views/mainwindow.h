@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QTimer>
+#include <QTime>
+
 
 #include <QDebug>
 
@@ -23,17 +26,21 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_actionQ_triggered();
+
     void cardSelected(const int currentStackIdx);
+    void chronoUpate();
+    void areYouWin();
 
     void on_actionPlay_triggered();
-
     void on_actionHelp_triggered();
+    void on_actionQuit_triggered();
 
 private:
     Ui::MainWindow *ui;
     Game *mGame;
     QList<QPushButton *> mStackedCards;
+    QTimer mChrono;
+    QTime  mChronoHMS;
 
 
 };

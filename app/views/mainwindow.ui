@@ -31,294 +31,358 @@ background-image: url(:/images/background_table.png);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QPushButton" name="pushButton_1">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QLabel" name="lblNumberOfCards">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Consolas</family>
-        <pointsize>20</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #08441e;
+   <widget class="QPushButton" name="pushButton_1">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>39</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>156</x>
+      <y>39</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>303</x>
+      <y>39</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblNumberOfCards">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>109</y>
+      <width>130</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #08441e;
 color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>0</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="3">
-     <widget class="QLabel" name="lblChrono">
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>50</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <family>Consolas</family>
-        <pointsize>20</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: #08441e;
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>266</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>156</x>
+      <y>266</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_6">
+    <property name="geometry">
+     <rect>
+      <x>303</x>
+      <y>266</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblChrono">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>160</y>
+      <width>130</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>50</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #08441e;
 color: rgb(255, 255, 255);</string>
-      </property>
-      <property name="text">
-       <string>00:00:00</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="pushButton_8">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="pushButton_9">
-      <property name="minimumSize">
-       <size>
-        <width>128</width>
-        <height>191</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>100</width>
-        <height>152</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="flat">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
+    </property>
+    <property name="text">
+     <string>00:00:00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_7">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>493</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_8">
+    <property name="geometry">
+     <rect>
+      <x>156</x>
+      <y>493</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_9">
+    <property name="geometry">
+     <rect>
+      <x>303</x>
+      <y>493</y>
+      <width>128</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>128</width>
+      <height>191</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>100</width>
+      <height>152</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

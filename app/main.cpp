@@ -1,6 +1,5 @@
 #include "views/mainwindow.h"
 #include <QApplication>
-#include <QDebug>
 
 #include "maketenglobal.h"
 
