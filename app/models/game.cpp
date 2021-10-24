@@ -117,7 +117,7 @@ bool Game::areYouWin()
     bool win = true;
     QVector<Card *>::iterator it;
     for (it = mStacks.begin(); it != mStacks.end(); ++it) {
-        if ((*it) != nullptr) {
+        if (((*it) != nullptr) && (*it)->value() < Value::VALUE_END) {
             win = false;
         }
     }

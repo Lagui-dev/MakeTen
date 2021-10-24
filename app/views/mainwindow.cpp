@@ -48,9 +48,10 @@ void MainWindow::cardSelected(const int currentStackIdx)
     int stackIdx = 0;
     switch (mGame->check(currentStackIdx)) {
     case State::NOTHING:
-        mGame->draw(currentStackIdx);
-        mStackedCards.at(currentStackIdx)->setEnabled(true);
-        mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->mPicture);
+        if (mGame->draw(currentStackIdx)) {
+            mStackedCards.at(currentStackIdx)->setEnabled(true);
+            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->mPicture);
+        }
         break;
     case State::WAITING:
         mStackedCards.at(currentStackIdx)->setEnabled(false);
@@ -158,10 +159,6 @@ void MainWindow::on_actionQuit_triggered()
 
 bool MainWindow::playForMe()
 {
-    for (int idx = 0; idx < 9; idx++) {
-        cardSelected(idx);
-    }
-
     bool played = true;
     while (played) {
         played = false;
@@ -170,6 +167,12 @@ bool MainWindow::playForMe()
         QList<QPushButton *>::iterator it1;
         for (it1 = mStackedCards.begin(); it1 != mStackedCards.end(); ++it1) {
             if ((*it1)->isVisible()) {
+                // Card not drawed
+                if (mGame->getCard(stackIdx1)->value() == 14) {
+                    cardSelected(stackIdx1);
+                    played = true;
+                    goto exitFor;
+                }
                 if (mGame->getCard(stackIdx1)->value() == 10) {
                     cardSelected(stackIdx1);
                     played = true;
