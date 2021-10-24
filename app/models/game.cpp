@@ -53,7 +53,8 @@ State Game::check(const int stackIdx)
              *
              * SumBefore = 12 && CurrentCard = 12 Then 2 Queens => Cancel
              */
-            if ((sumOfCardBefore == 12) && (mStacks.at(stackIdx)->point()==12)) {
+            if (((sumOfCardBefore == 12) && (mStacks.at(stackIdx)->point() == 12))
+                    || mStacks.at(stackIdx)->value() == 10) {
                 mSumOfCard = 0;
                 mNumberOfCardSelected = 0;
                 return State::CANCEL;
@@ -69,6 +70,7 @@ State Game::check(const int stackIdx)
         }
         break;
     case 3:
+        // Jack, Queen and King
         if (mSumOfCard == 36) {
             mSumOfCard = 0;
             mNumberOfCardSelected = 0;
@@ -108,4 +110,17 @@ bool Game::isPlayable(const int stackIdx)
 int Game::size()
 {
     return mDeck->size();
+}
+
+bool Game::areYouWin()
+{
+    bool win = true;
+    QVector<Card *>::iterator it;
+    for (it = mStacks.begin(); it != mStacks.end(); ++it) {
+        if ((*it) != nullptr) {
+            win = false;
+        }
+    }
+
+    return win;
 }

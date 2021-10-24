@@ -29,11 +29,14 @@ private slots:
 
     void cardSelected(const int currentStackIdx);
     void chronoUpate();
-    void areYouWin();
 
     void on_actionPlay_triggered();
     void on_actionHelp_triggered();
     void on_actionQuit_triggered();
+
+    void on_actionPFM_triggered();
+
+    void on_btnActivePFM_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -41,6 +44,8 @@ private:
     QList<QPushButton *> mStackedCards;
     QTimer mChrono;
     QTime  mChronoHMS;
+
+    bool playForMe();
 
 
 };

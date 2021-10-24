@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     mStackedCards.append(ui->pushButton_8);
     mStackedCards.append(ui->pushButton_9);
 
+    ui->toolBar->actions().at(4)->setVisible(false);
     ui->statusbar->showMessage("Tens Solitaire v0.1 - MIT Licence - 2021");
     mGame = new Game();
     int stackIdx = 0;
@@ -108,23 +109,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
         }
         break;
     }
-    areYouWin();
-}
-
-void MainWindow::chronoUpate()
-{
-    mChronoHMS = mChronoHMS.addSecs(1);
-    ui->lblChrono->setText(mChronoHMS.toString("hh:mm:ss"));
-}
-
-void MainWindow::areYouWin()
-{
-    bool win = true;
-    QList<QPushButton *>::iterator it;
-    for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
-        win = win && not((*it)->isVisible());
-    }
-    if (win) {
+    if (mGame->areYouWin()) {
         ui->lblNumberOfCards->setText("YOU WIN!");
         mChrono.stop();
     } else {
@@ -132,6 +117,11 @@ void MainWindow::areYouWin()
     }
 }
 
+void MainWindow::chronoUpate()
+{
+    mChronoHMS = mChronoHMS.addSecs(1);
+    ui->lblChrono->setText(mChronoHMS.toString("hh:mm:ss"));
+}
 
 void MainWindow::on_actionPlay_triggered()
 {
@@ -164,5 +154,87 @@ void MainWindow::on_actionHelp_triggered()
 void MainWindow::on_actionQuit_triggered()
 {
     qApp->quit();
+}
+
+bool MainWindow::playForMe()
+{
+    for (int idx = 0; idx < 9; idx++) {
+        cardSelected(idx);
+    }
+
+    bool played = true;
+    while (played) {
+        played = false;
+
+        int stackIdx1 = 0;
+        QList<QPushButton *>::iterator it1;
+        for (it1 = mStackedCards.begin(); it1 != mStackedCards.end(); ++it1) {
+            if ((*it1)->isVisible()) {
+                if (mGame->getCard(stackIdx1)->value() == 10) {
+                    cardSelected(stackIdx1);
+                    played = true;
+                    goto exitFor;
+                } else {
+                    int stackIdx2 = 0;
+                    QList<QPushButton *>::iterator it2;
+                    for (it2 = mStackedCards.begin(); it2 != mStackedCards.end(); ++it2) {
+                        if ((*it2)->isVisible() && (stackIdx1 != stackIdx2)) {
+                            switch (mGame->getCard(stackIdx1)->value()+mGame->getCard(stackIdx2)->value()) {
+                            case 10:
+                                cardSelected(stackIdx1);
+                                cardSelected(stackIdx2);
+                                played = true;
+                                goto exitFor;
+                            case 23 ... 25:
+                                if ((mGame->getCard(stackIdx1)->value() == 12 && mGame->getCard(stackIdx2)->value() == 12)
+                                        || mGame->getCard(stackIdx2)->value() == 10) {
+                                    break;
+                                }
+                                int stackIdx3 = 0;
+                                QList<QPushButton *>::iterator it3;
+                                for (it3 = mStackedCards.begin(); it3 != mStackedCards.end(); ++it3) {
+                                    if ((*it3)->isVisible() && ((stackIdx1 != stackIdx2) && (stackIdx1 != stackIdx3) && (stackIdx2 != stackIdx3))) {
+                                        if ((mGame->getCard(stackIdx1)->value()
+                                                +mGame->getCard(stackIdx2)->value()
+                                                +mGame->getCard(stackIdx3)->value()) == 36) {
+                                            cardSelected(stackIdx1);
+                                            cardSelected(stackIdx2);
+                                            cardSelected(stackIdx3);
+                                            played = true;
+                                            goto exitFor;
+                                        }
+                                    }
+                                    stackIdx3++;
+                                }
+                                break;
+                            }
+                        }
+                        stackIdx2++;
+                    }
+                }
+            }
+            stackIdx1++;
+
+        }
+
+exitFor:
+        if (mGame->areYouWin()) {
+            break;
+        }
+    }
+
+    return true;
+}
+
+
+void MainWindow::on_actionPFM_triggered()
+{
+    playForMe();
+}
+
+
+void MainWindow::on_btnActivePFM_clicked()
+{
+    ui->toolBar->actions().at(4)->setVisible(true);
 }
 

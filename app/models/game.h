@@ -28,6 +28,7 @@ public:
     bool draw(const int stackIdx);
     bool isPlayable(const int stackIdx);
     int size();
+    bool areYouWin();
 
 private:
     Table  *mTableOne;

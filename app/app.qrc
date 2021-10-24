@@ -69,5 +69,6 @@
         <file>icons/restart.svg</file>
         <file>images/background_table.png</file>
         <file>icons/idea.svg</file>
+        <file>icons/cheat.svg</file>
     </qresource>
 </RCC>
