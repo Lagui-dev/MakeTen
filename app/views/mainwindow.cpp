@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     mStackedCards.append(ui->pushButton_9);
 
     ui->toolBar->actions().at(4)->setVisible(false);
-    ui->statusbar->showMessage("Tens Solitaire v0.1 - MIT Licence - 2021");
+    ui->statusbar->showMessage("Tens Solitaire v0.1.01 - MIT Licence - 2021 - Lagui-dev");
     mGame = new Game();
     int stackIdx = 0;
     QList<QPushButton *>::iterator it;
