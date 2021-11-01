@@ -7,7 +7,8 @@ Card::Card()
     mPoint = 0;
     mIsPlayable = false;
     mColorBackground = ColorBackground::BLUE;
-    mPicture.load(":/images/cards/back_blue.png");
+    setColorBackground(mColorBackground);
+
 
 }
 
@@ -17,7 +18,15 @@ Card::Card(Color c, Value v, int p, QObject *parent) : QObject(parent)
     mValue = v;
     mPoint = p;
     mIsPlayable = true;
-    mPicture.load(QString(":/images/cards/%1%2.png").arg(v,2,10,QLatin1Char('0')).arg(c));
+    mImage = QString(":/images/cards/%1%2.png").arg(v,2,10,QLatin1Char('0')).arg(c);
+
+}
+
+QPixmap Card::image() const
+{
+    QPixmap pix;
+    pix.load (mImage);
+    return pix;
 }
 
 QString Card::print()
@@ -87,22 +96,22 @@ void Card::setColorBackground(ColorBackground newColorBackground)
     mColorBackground = newColorBackground;
     switch (mColorBackground) {
     case ColorBackground::BLUE:
-        mPicture.load(":/images/cards/back_blue.png");
+        mImage = ":/images/cards/back_blue.png";
         break;
     case ColorBackground::GRAY:
-        mPicture.load(":/images/cards/back_gray.png");
+        mImage = ":/images/cards/back_gray.png";
         break;
     case ColorBackground::GREEN:
-        mPicture.load(":/images/cards/back_green.png");
+        mImage = ":/images/cards/back_green.png";
         break;
     case ColorBackground::PURPLE:
-        mPicture.load(":/images/cards/back_purple.png");
+        mImage = ":/images/cards/back_purple.png";
         break;
     case ColorBackground::RED:
-        mPicture.load(":/images/cards/back_red.png");
+        mImage = ":/images/cards/back_red.png";
         break;
     case ColorBackground::YELLOW:
-        mPicture.load(":/images/cards/back_yellow.png");
+        mImage = ":/images/cards/back_yellow.png";
         break;
     }
 

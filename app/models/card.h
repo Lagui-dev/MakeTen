@@ -19,7 +19,8 @@ public:
     explicit Card();
     explicit Card(Color c, Value v, int p, QObject *parent = nullptr);
 
-    QPixmap mPicture;
+    QPixmap mPicture0;
+    QPixmap image() const;
 
     QString print();
 
@@ -44,6 +45,7 @@ private:
     int     mPoint;
     bool    mIsPlayable;
     ColorBackground mColorBackground;
+    QString mImage;
 
 };
 

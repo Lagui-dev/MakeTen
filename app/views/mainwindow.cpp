@@ -18,12 +18,12 @@ MainWindow::MainWindow(QWidget *parent)
     mStackedCards.append(ui->pushButton_9);
 
     ui->toolBar->actions().at(4)->setVisible(false);
-    ui->statusbar->showMessage("Tens Solitaire v0.1.01 - MIT Licence - 2021 - Lagui-dev");
+    ui->statusbar->showMessage("Tens Solitaire v0.1.01.beta2 - MIT Licence - 2021 - Lagui-dev");
     mGame = new Game();
     int stackIdx = 0;
     QList<QPushButton *>::iterator it;
     for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
-        (*it)->setIcon(mGame->getCard(stackIdx)->mPicture);
+        (*it)->setIcon(mGame->getCard(stackIdx)->image());
         connect((*it), &QPushButton::clicked, this, [=]() {this->cardSelected(stackIdx); });
         stackIdx++;
     }
@@ -50,7 +50,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
     case State::NOTHING:
         if (mGame->draw(currentStackIdx)) {
             mStackedCards.at(currentStackIdx)->setEnabled(true);
-            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->mPicture);
+            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->image());
         }
         break;
     case State::WAITING:
@@ -64,7 +64,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
     case State::WINNING1CARD:
         if (mGame->draw(currentStackIdx)) {
             mStackedCards.at(currentStackIdx)->setEnabled(true);
-            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->mPicture);
+            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->image());
             break;
         } else {
             mStackedCards.at(currentStackIdx)->setVisible(false);
@@ -75,7 +75,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
             if (!(*it)->isEnabled()) {
                 (*it)->setEnabled(true);
                 if (mGame->draw(stackIdx)) {
-                    mStackedCards.at(stackIdx)->setIcon(mGame->getCard(stackIdx)->mPicture);
+                    mStackedCards.at(stackIdx)->setIcon(mGame->getCard(stackIdx)->image());
                 } else {
                     mStackedCards.at(stackIdx)->setVisible(false);
                 }
@@ -85,7 +85,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
         }
         if (mGame->draw(currentStackIdx)) {
             mStackedCards.at(currentStackIdx)->setEnabled(true);
-            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->mPicture);
+            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->image());
         } else {
             mStackedCards.at(currentStackIdx)->setVisible(false);
         }
@@ -95,7 +95,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
             if (!(*it)->isEnabled()) {
                 (*it)->setEnabled(true);
                 if (mGame->draw(stackIdx)) {
-                    mStackedCards.at(stackIdx)->setIcon(mGame->getCard(stackIdx)->mPicture);
+                    mStackedCards.at(stackIdx)->setIcon(mGame->getCard(stackIdx)->image());
                 } else {
                     mStackedCards.at(stackIdx)->setVisible(false);
                 }
@@ -104,7 +104,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
         }
         if (mGame->draw(currentStackIdx)) {
             mStackedCards.at(currentStackIdx)->setEnabled(true);
-            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->mPicture);
+            mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->image());
         } else {
             mStackedCards.at(currentStackIdx)->setVisible(false);
         }
@@ -135,7 +135,7 @@ void MainWindow::on_actionPlay_triggered()
     int stackIdx = 0;
     QList<QPushButton *>::iterator it;
     for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
-        (*it)->setIcon(mGame->getCard(stackIdx)->mPicture);
+        (*it)->setIcon(mGame->getCard(stackIdx)->image());
         (*it)->setVisible(true);
         (*it)->setEnabled(true);
         stackIdx++;
