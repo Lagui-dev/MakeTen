@@ -5,7 +5,9 @@ include (models/models.pri)
 QT       += core gui widgets 
 
 TEMPLATE = app
-TARGET   = $$IDE_APP_TARGET
+win32 {
+    TARGET   = $$IDE_APP_TARGET
+}
 DESTDIR  = $$IDE_APP_PATH
 VERSION  = $$APP_VERSION
 

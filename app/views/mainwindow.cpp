@@ -47,21 +47,21 @@ void MainWindow::cardSelected(const int currentStackIdx)
     QList<QPushButton *>::iterator it;
     int stackIdx = 0;
     switch (mGame->check(currentStackIdx)) {
-    case State::NOTHING:
+    case GameState::NOTHING:
         if (mGame->draw(currentStackIdx)) {
             mStackedCards.at(currentStackIdx)->setEnabled(true);
             mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->image());
         }
         break;
-    case State::WAITING:
+    case GameState::WAITING:
         mStackedCards.at(currentStackIdx)->setEnabled(false);
         break;
-    case State::CANCEL:
+    case GameState::CANCEL:
         for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
             (*it)->setEnabled(true);
         }
         break;
-    case State::WINNING1CARD:
+    case GameState::WINNING1CARD:
         if (mGame->draw(currentStackIdx)) {
             mStackedCards.at(currentStackIdx)->setEnabled(true);
             mStackedCards.at(currentStackIdx)->setIcon(mGame->getCard(currentStackIdx)->image());
@@ -70,7 +70,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
             mStackedCards.at(currentStackIdx)->setVisible(false);
         }
         break;
-    case State::WINNING2ARDS:
+    case GameState::WINNING2CARDS:
         for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
             if (!(*it)->isEnabled()) {
                 (*it)->setEnabled(true);
@@ -90,7 +90,7 @@ void MainWindow::cardSelected(const int currentStackIdx)
             mStackedCards.at(currentStackIdx)->setVisible(false);
         }
         break;
-    case State::WINNING3CARDS:
+    case GameState::WINNING3CARDS:
         for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
             if (!(*it)->isEnabled()) {
                 (*it)->setEnabled(true);
@@ -127,8 +127,7 @@ void MainWindow::chronoUpate()
 void MainWindow::on_actionPlay_triggered()
 {
     mChrono.stop();
-    delete mGame;
-    mGame = new Game();
+    mGame->reStart();
     mChronoHMS = QTime(0,0,0,0);
     ui->lblChrono->setText(mChronoHMS.toString("hh:mm:ss"));
     mChrono.start();

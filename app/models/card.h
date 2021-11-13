@@ -19,8 +19,8 @@ public:
     explicit Card();
     explicit Card(Color c, Value v, int p, QObject *parent = nullptr);
 
-    QPixmap mPicture0;
     QPixmap image() const;
+    Q_INVOKABLE QString imagePath() const;
 
     QString print();
 

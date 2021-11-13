@@ -29,6 +29,11 @@ QPixmap Card::image() const
     return pix;
 }
 
+QString Card::imagePath() const
+{
+    return mImage;
+}
+
 QString Card::print()
 {
     QString colorOfCard;

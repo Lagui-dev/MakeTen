@@ -59,7 +59,6 @@
         <file>images/cards/back_green.png</file>
         <file>images/cards/back_purple.png</file>
         <file>images/cards/back_yellow.png</file>
-        <file>images/cards/balck_red.png</file>
         <file>images/cards/honor_clubs.png</file>
         <file>images/cards/honor_diamond.png</file>
         <file>images/cards/honor_heart-14.png</file>
@@ -70,5 +69,13 @@
         <file>images/background_table.png</file>
         <file>icons/idea.svg</file>
         <file>icons/cheat.svg</file>
+        <file>images/cards/back_red.png</file>
+        <file>images/cards/back_table.png</file>
+        <file>icons/logo_128x128.png</file>
+        <file>icons/logo_512x512.png</file>
+        <file>icons/logo_128x128.ico</file>
+        <file>images/card_selected.png</file>
+        <file>images/logo.png</file>
+        <file>images/youwin.png</file>
     </qresource>
 </RCC>
