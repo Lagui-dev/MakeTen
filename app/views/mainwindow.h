@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QTimer>
 #include <QTime>
+#include <QPropertyAnimation>
 
 
 #include <QDebug>
@@ -29,13 +30,12 @@ private slots:
 
     void cardSelected(const int currentStackIdx);
     void chronoUpate();
+    void animateWin();
 
     void on_actionPlay_triggered();
     void on_actionHelp_triggered();
     void on_actionQuit_triggered();
-
     void on_actionPFM_triggered();
-
     void on_btnActivePFM_clicked();
 
 private:
@@ -46,6 +46,8 @@ private:
     QTime  mChronoHMS;
 
     bool playForMe();
+    QPropertyAnimation *animation;
+
 
 
 };

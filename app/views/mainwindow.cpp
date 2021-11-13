@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     mStackedCards.append(ui->pushButton_9);
 
     ui->toolBar->actions().at(4)->setVisible(false);
-    ui->statusbar->showMessage("Tens Solitaire v0.1.01.beta2 - MIT Licence - 2021 - Lagui-dev");
+    ui->statusbar->showMessage("Tens Solitaire v0.1.01.beta3 - MIT Licence - 2021 - Lagui-dev");
     mGame = new Game();
     int stackIdx = 0;
     QList<QPushButton *>::iterator it;
@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lblNumberOfCards->setText(QString::number(mGame->size()));
     mChrono.setInterval(1000);
     mChrono.start();
+    ui->lblYouWin->setVisible(false);
     this->show();
 }
 
@@ -111,8 +112,13 @@ void MainWindow::cardSelected(const int currentStackIdx)
         break;
     }
     if (mGame->areYouWin()) {
-        ui->lblNumberOfCards->setText("YOU WIN!");
+        QList<QPushButton *>::iterator it;
+        for (it = mStackedCards.begin(); it != mStackedCards.end(); ++it) {
+            (*it)->setVisible(false);
+        }
         mChrono.stop();
+        animateWin();
+
     } else {
         ui->lblNumberOfCards->setText(QString::number(mGame->size()));
     }
@@ -122,6 +128,22 @@ void MainWindow::chronoUpate()
 {
     mChronoHMS = mChronoHMS.addSecs(1);
     ui->lblChrono->setText(mChronoHMS.toString("hh:mm:ss"));
+}
+
+void MainWindow::animateWin()
+{
+    ui->lblYouWin->move((this->width() - ui->lblYouWin->width()) /2 ,0);
+    ui->lblYouWin->setVisible(true);
+    animation = new QPropertyAnimation(ui->lblYouWin, "geometry");
+    animation->setDuration(2000);
+    animation->setStartValue(ui->lblYouWin->geometry());
+    animation->setEndValue(QRect(ui->lblYouWin->x(),400,ui->lblYouWin->width(), ui->lblYouWin->height()));
+
+    QEasingCurve curve;
+    curve.setType(QEasingCurve::InOutBack);
+    animation->setEasingCurve(curve);
+
+    animation->start();
 }
 
 void MainWindow::on_actionPlay_triggered()
@@ -139,6 +161,7 @@ void MainWindow::on_actionPlay_triggered()
         (*it)->setEnabled(true);
         stackIdx++;
     }
+    ui->lblYouWin->setVisible(false);
     ui->lblNumberOfCards->setText(QString::number(mGame->size()));
 }
 
@@ -239,4 +262,5 @@ void MainWindow::on_btnActivePFM_clicked()
 {
     ui->toolBar->actions().at(4)->setVisible(true);
 }
+
 
